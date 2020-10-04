@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefHeight="800.0" prefWidth="1040.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="800.0" prefWidth="1040.0" style="-fx-background-color: lighgray;">
+         <children>
+            <VBox fx:id="loginVBox" layoutX="390.0" layoutY="176.0" prefHeight="371.0" prefWidth="288.0" style="-fx-background-color: white; -fx-blend-mode: solid; -fx-border-color: black;">
+               <children>
+                  <BorderPane fx:id="borderPaneLogin" prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="286.0" text="Login to CORDIS" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Avenir Roman" size="17.0" />
+                           </font>
+                        </Label>
+                     </top>
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TextField fx:id="usernameText" prefHeight="27.0" prefWidth="248.0" promptText="Username">
+                                 <VBox.margin>
+                                    <Insets bottom="30.0" left="10.0" right="10.0" top="30.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <PasswordField fx:id="passwordText" promptText="Password">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                           </children>
+                        </VBox>
+                     </center>
+                     <bottom>
+                        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="signUpButton" mnemonicParsing="false" onMouseClicked="#goToSignUp" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #1E90FF; -fx-border-width: 2;" text="Sign up" textFill="DODGERBLUE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Avenir Oblique" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#login" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #1E90FF; -fx-border-color: #1E90FF; -fx-border-width: 2;" text="Login" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="40.0" right="20.0" top="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Avenir Oblique" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+                  <Label fx:id="loginErrorLabel" alignment="CENTER" prefHeight="41.0" prefWidth="285.0" style="-fx-background-color: white;" textFill="#dd0909">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="signUpVBox" layoutX="405.0" layoutY="194.0" prefHeight="371.0" prefWidth="288.0" style="-fx-background-color: white; -fx-blend-mode: solid; -fx-border-color: black;" visible="false">
+               <children>
+                  <BorderPane fx:id="borderPaneSignUp" prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="286.0" text="Sign Up to CORDIS" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Avenir Roman" size="17.0" />
+                           </font>
+                        </Label>
+                     </top>
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TextField fx:id="usernameSignText" prefHeight="27.0" prefWidth="248.0" promptText="Username">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <PasswordField fx:id="passwordSignText" promptText="Password">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                              <PasswordField fx:id="confirmPasswordSignText" promptText="Confirm Password">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                           </children>
+                        </VBox>
+                     </center>
+                     <bottom>
+                        <HBox prefHeight="95.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#goToLogin" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #1E90FF; -fx-border-width: 2;" text="Cancel" textFill="DODGERBLUE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Avenir Oblique" size="13.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#signUp" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #1E90FF; -fx-border-color: #1E90FF; -fx-border-width: 2;" text="Confirm" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="40.0" right="20.0" top="30.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Avenir Oblique" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+                  <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="41.0" prefWidth="285.0" style="-fx-background-color: white;" textFill="#dd0909">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <SplitPane fx:id="dashboardSplitPane" dividerPositions="0.19469026548672566" prefHeight="800.0" prefWidth="1040.0" visible="false">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <Accordion prefHeight="116.0" prefWidth="199.0">
+                           <panes>
+                              <TitledPane fx:id="actorTiteledPane" animated="false" prefHeight="55.0" prefWidth="194.0" style="-fx-background-color: white;" text="Actors">
+                                 <content>
+                                    <Button fx:id="searchActorButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#showActorSearch" prefHeight="27.0" prefWidth="198.0" style="-fx-background-color: white;" text="Search Actor" />
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="projectTiteledPane" animated="false" prefHeight="27.0" prefWidth="147.0" text="Projects">
+                                 <content>
+                                    <Button fx:id="searchProjectButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#showProjectSearch" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: white;" text="Search Project" />
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="dashboardTiteledPane" animated="false" prefHeight="55.0" prefWidth="194.0" style="-fx-background-color: white;" text="Dashboard">
+                                 <content>
+                                    <Button fx:id="dashboardButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#showDashboard" prefHeight="27.0" prefWidth="198.0" style="-fx-background-color: white;" text="Display Dashboard" />
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="userTiteledPane" animated="false" prefHeight="52.0" prefWidth="193.0" text="Users">
+                                 <content>
+                                    <Button alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#showUserSearch" prefHeight="27.0" prefWidth="203.0" style="-fx-background-color: white;" text="Search Users action" />
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="moreGraphsPane" animated="false" prefHeight="52.0" prefWidth="193.0" text="More Graphs">
+                                 <content>
+                                    <Button fx:id="graphs1Button" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#showMoreGraphs" prefHeight="27.0" prefWidth="203.0" style="-fx-background-color: white;" text="Look for more Graphs" />
+                                 </content>
+                              </TitledPane>
+                           </panes>
+                        </Accordion>
+                        <Label fx:id="userLabel" alignment="CENTER" layoutX="6.0" layoutY="717.0" prefHeight="55.0" prefWidth="198.0" textFill="#49b566" wrapText="true">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="Avenir Heavy" size="13.0" />
+                           </font>
+                        </Label>
+                        <Button alignment="CENTER" layoutX="6.0" layoutY="690.0" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="27.0" prefWidth="199.0" style="-fx-background-color: white;" text="Log Out" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <BorderPane fx:id="actorPane" prefHeight="799.0" prefWidth="833.0" visible="false">
+                           <top>
+                              <Label fx:id="dashboardLabel" alignment="CENTER" prefHeight="121.0" prefWidth="633.0" text="Actor Search" wrapText="true" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Avenir Oblique" size="24.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <VBox fx:id="searchActorVBox" prefHeight="400.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane fx:id="searchActorGrid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="178.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.0" minWidth="10.0" prefWidth="297.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="searchActorText" prefHeight="27.0" prefWidth="277.0" promptText="Search Criteria" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Button fx:id="searchActorButton" mnemonicParsing="false" onMouseClicked="#searchActor" text="Search Actor" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="choiceActorCombo" prefWidth="150.0" promptText="Actor Criteria" GridPane.rowIndex="1" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                    <TableView fx:id="searchActorTable" prefHeight="300.0" prefWidth="581.0">
+                                       <columns>
+                                          <TableColumn fx:id="shortNameColumn" prefWidth="153.33334350585938" text="Short Name" />
+                                          <TableColumn fx:id="nameColumn" prefWidth="283.3333740234375" text="Name" />
+                                          <TableColumn fx:id="totalColumn" prefWidth="250.0" style="-fx-alignment: CENTER-RIGHT;" text="Total Contribution" />
+                                          <TableColumn fx:id="urlColumn" minWidth="0.0" prefWidth="124.0" text="Web Site" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                        <BorderPane fx:id="projectPane" prefHeight="799.0" prefWidth="836.0" visible="false">
+                           <top>
+                              <Label fx:id="dashboardProjectLabel" alignment="CENTER" prefHeight="121.0" prefWidth="633.0" text="Search Project" visible="false" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Avenir Oblique" size="24.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <VBox fx:id="searchProjectVBox" prefHeight="400.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane fx:id="searchProjectGrid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="178.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.0" minWidth="10.0" prefWidth="297.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="searchProjectText" prefHeight="27.0" prefWidth="277.0" promptText="Search Criteria" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Button fx:id="searchProjectButton" mnemonicParsing="false" onMouseClicked="#searchProject" text="Search Project" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="choiceProjectCombo" prefWidth="150.0" promptText="Project Criteria" GridPane.rowIndex="1" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                    <TableView fx:id="searchProjectTable" prefHeight="300.0" prefWidth="581.0">
+                                       <columns>
+                                          <TableColumn fx:id="projectColumn" prefWidth="104.0" text="Project" />
+                                          <TableColumn fx:id="acronymColumn" prefWidth="223.0" text="Acronym" />
+                                          <TableColumn fx:id="titleColumn" prefWidth="302.0" text="Title" />
+                                          <TableColumn fx:id="totalCostColumn" editable="false" prefWidth="186.0" style="-fx-alignment: CENTER-RIGHT;" text="Total Cost" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                        <BorderPane fx:id="userPane" prefHeight="799.0" prefWidth="833.0" visible="false">
+                           <top>
+                              <Label fx:id="dashboardUserLabel" alignment="CENTER" prefHeight="121.0" prefWidth="633.0" text="User Search" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Avenir Oblique" size="24.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <VBox fx:id="searchActorVBox11" prefHeight="400.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane fx:id="searchUserGrid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="178.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.0" minWidth="10.0" prefWidth="297.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="searchUserText" prefHeight="27.0" prefWidth="277.0" promptText="Search Criteria" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Button fx:id="searchUserButton" mnemonicParsing="false" onMouseClicked="#searchUser" text="Search User" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="choiceUserCombo" prefWidth="150.0" promptText="User Criteria" GridPane.rowIndex="1" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                    <TableView fx:id="searchUserTable" prefHeight="496.0" prefWidth="813.0">
+                                       <columns>
+                                          <TableColumn fx:id="userNameColumn" prefWidth="104.0" text="User name" />
+                                          <TableColumn fx:id="actionColumn" prefWidth="223.0" text="Action" />
+                                          <TableColumn fx:id="actionDateColumn" prefWidth="223.0" text="Action Date" />
+                                          <TableColumn fx:id="parameterColumn" prefWidth="124.0" text="Parameters" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </center>
+                           <bottom>
+                              <Label alignment="CENTER" prefHeight="70.0" prefWidth="829.0" text="The actions are: LOGIN, LOGOUT, SIGNUP,  SEARCH_PROJECT, SEARCH_ACTOR and SEARCH_USER_ACTION , SEARCH_DASHBOARD" BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                        <BorderPane fx:id="dashboardPane" layoutX="1.0" layoutY="-3.0" prefHeight="802.0" prefWidth="833.0" visible="false">
+                           <top>
+                              <Label fx:id="dashboardLabel1" alignment="CENTER" prefHeight="66.0" prefWidth="633.0" text="Dashboard" wrapText="true" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Avenir Oblique" size="24.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <VBox fx:id="searchActorVBox1" prefHeight="668.0" prefWidth="816.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane fx:id="searchActorGrid1" prefHeight="97.0" prefWidth="793.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="379.0000305175781" minWidth="10.0" prefWidth="379.0000305175781" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.0" minWidth="10.0" prefWidth="51.6666259765625" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="362.3333740234375" minWidth="10.0" prefWidth="338.6666259765625" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="362.3333740234375" minWidth="10.0" prefWidth="173.3333740234375" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="24.666671752929688" minHeight="7.3333282470703125" prefHeight="7.3333282470703125" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="52.66667175292969" minHeight="10.0" prefHeight="52.66667175292969" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="24.666671752929688" minHeight="10.0" prefHeight="12.666671752929688" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="47.33332824707031" minHeight="10.0" prefHeight="47.33332824707031" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <ComboBox fx:id="shortNameCombo" editable="true" prefHeight="27.0" prefWidth="233.0" promptText="Actor Short Name" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="activityTypeCombo" editable="true" prefHeight="27.0" prefWidth="233.0" promptText="Activity Type" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="countryCombo" editable="true" prefHeight="27.0" prefWidth="233.0" promptText="Country" GridPane.rowIndex="3" />
+                                          <ComboBox fx:id="topicCombo" editable="true" prefHeight="27.0" prefWidth="233.0" promptText="Project Topic" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                          <Button fx:id="clearButton" mnemonicParsing="false" onMouseClicked="#clearFilter" text="Clear Filter" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <BarChart fx:id="barChart" animated="false" prefHeight="254.0" prefWidth="804.0">
+                                      <xAxis>
+                                        <CategoryAxis fx:id="barCategoryAxis" side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis fx:id="barNumberAxis" side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                    <HBox prefHeight="330.0" prefWidth="804.0">
+                                       <children>
+                                          <PieChart fx:id="pieChart" prefHeight="287.0" prefWidth="401.0" />
+                                          <LineChart fx:id="lineChart">
+                                            <xAxis>
+                                              <CategoryAxis fx:id="lineCategoryAxis" animated="false" side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis fx:id="lineNumberAxis" side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                        <BorderPane fx:id="moreDashboardPane" layoutX="11.0" layoutY="7.0" prefHeight="802.0" prefWidth="833.0" visible="false">
+                           <top>
+                              <Label fx:id="dashboardLabel11" alignment="CENTER" prefHeight="66.0" prefWidth="633.0" text="More Graphs" wrapText="true" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="Avenir Oblique" size="24.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <VBox fx:id="searchActorVBox12" prefHeight="668.0" prefWidth="816.0" BorderPane.alignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <children>
+                                    <BorderPane fx:id="moreGraphsInternPane" prefHeight="711.0" prefWidth="849.0">
+                                       <top>
+                                          <HBox prefHeight="29.0" prefWidth="813.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="moreGraph1Button" mnemonicParsing="false" onMouseClicked="#showBarGraph1" prefHeight="30.0" prefWidth="130.0" text="Graph 1" />
+                                                <Button fx:id="moreGraph2Button" mnemonicParsing="false" onMouseClicked="#showBarGraph2" prefHeight="30.0" prefWidth="130.0" text="Graph 2" />
+                                                <Button fx:id="moreGraph3Button" mnemonicParsing="false" onMouseClicked="#showBarGraph3" prefHeight="30.0" prefWidth="130.0" text="Graph 3" />
+                                                <Button fx:id="moreGraph4Button" mnemonicParsing="false" onMouseClicked="#showBarGraph4" prefHeight="30.0" prefWidth="130.0" text="Graph 4" />
+                                                <Button fx:id="moreGraph5Button" mnemonicParsing="false" onMouseClicked="#showBarGraph5" prefHeight="30.0" prefWidth="130.0" text="Graph 5" />
+                                                <Button fx:id="moreGraph6Button" mnemonicParsing="false" onMouseClicked="#showBarGraph6" prefHeight="30.0" prefWidth="130.0" text="Graph 6" />
+                                                <Button fx:id="moreGraph7Button" mnemonicParsing="false" onMouseClicked="#showBarGraph7" prefHeight="30.0" prefWidth="130.0" text="Graph 7" />
+                                                <Button fx:id="moreGraph8Button" mnemonicParsing="false" onMouseClicked="#showBarGraph8" prefHeight="30.0" prefWidth="130.0" text="Graph 8" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </Pane>
+   </children>
+</GridPane>
